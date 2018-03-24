@@ -26,8 +26,8 @@ Its loaded when "height" in message:
 will be equal to "Current numbers of blocks" in local wallet (GUI - Help > Debug > Information).
 
 
-**Visit us at [Telegram](https://t.me/bitcore_btx_official) // Special Thanks to : [wfthkttn](https://github.com/wfthkttn)
+**Visit us at [Telegram](https://t.me/bitcore_btx_official) // Special Thanks to : [wfthkttn](https://github.com/wfthkttn)**
 
-Fork Source : https://github.com/dArkjON/BSD-Masternode-Setup-1604**
+Fork Source : https://github.com/dArkjON/BSD-Masternode-Setup-1604
 
 

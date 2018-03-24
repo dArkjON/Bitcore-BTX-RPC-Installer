@@ -1,7 +1,7 @@
 # Bitcore-BTX-RPC-Installer
 This script will install all required stuff to run a BitCore RPC Server.
 
-Just 2 simple Steps and your Server is done !. ***Only working for Linux Ubuntu 16.04 LTS ***
+Just 2 simple Steps and your Server is done !. ***Only working for Linux Ubuntu 16.04 LTS***
 
 
 ## Download and start the script

@@ -1,3 +1,8 @@
+# Bitcore-BTX-RPC-Installer
+This script will install all required stuff to run a BitCore RPC Server.
+Just 2 simple Steps and your Server is done !.
+
+
 Login as root, then do:
 
 `wget https://raw.githubusercontent.com/dArkjON/Bitcore-BTX-RPC-Installer/master/btxsetup.sh`
@@ -19,3 +24,7 @@ will be equal to "Current numbers of blocks" in local wallet (GUI - Help > Debug
 
 
 **Visit us at [Telegram](https://t.me/bitcore_btx_official)**
+
+Fork Source : https://github.com/dArkjON/BSD-Masternode-Setup-1604
+
+Special Thanks to : wfthkttn

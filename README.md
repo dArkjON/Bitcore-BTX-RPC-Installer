@@ -3,13 +3,16 @@ This script will install all required stuff to run a BitCore RPC Server.
 Just 2 simple Steps and your Server is done !.
 
 
+## Download and start the script
 Login as root, then do:
 
-`wget https://raw.githubusercontent.com/dArkjON/Bitcore-BTX-RPC-Installer/master/btxsetup.sh`
+```
+wget https://raw.githubusercontent.com/dArkjON/Bitcore-BTX-RPC-Installer/master/btxsetup.sh
 
-`chmod +x btxsetup.sh`
+chmod +x btxsetup.sh
 
-`./btxsetup.sh`
+./btxsetup.sh
+```
 
 
 To enable firewall, you have to manually reboot server when blockchain is fully loaded!
@@ -23,8 +26,8 @@ Its loaded when "height" in message:
 will be equal to "Current numbers of blocks" in local wallet (GUI - Help > Debug > Information).
 
 
-**Visit us at [Telegram](https://t.me/bitcore_btx_official)**
+**Visit us at [Telegram](https://t.me/bitcore_btx_official) // Special Thanks to : [wfthkttn](https://github.com/wfthkttn)
 
-Fork Source : https://github.com/dArkjON/BSD-Masternode-Setup-1604
+Fork Source : https://github.com/dArkjON/BSD-Masternode-Setup-1604**
 
-Special Thanks to : wfthkttn
+

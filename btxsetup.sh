@@ -42,7 +42,7 @@ echo '*** Step 3/10 - Running updates and installing required packages ***'
 apt-get update -y
 apt-get dist-upgrade -y
 apt-get install build-essential libtool autotools-dev autoconf automake pkg-config -y \
-libssl-dev libboost-all-dev git libminiupnpc-dev libevent-dev -y
+libssl-dev libboost-all-dev git software-properties-common libminiupnpc-dev libevent-dev -y
 add-apt-repository ppa:bitcoin/bitcoin -y
 apt-get update -y
 apt-get upgrade -y

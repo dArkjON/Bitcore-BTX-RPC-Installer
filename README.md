@@ -1,6 +1,6 @@
 Login as root, then do:
 
-`https://raw.githubusercontent.com/dArkjON/Bitcore-BTX-RPC-Installer/master/btxsetup.sh`
+`wget https://raw.githubusercontent.com/dArkjON/Bitcore-BTX-RPC-Installer/master/btxsetup.sh`
 
 `chmod +x btxsetup.sh`
 

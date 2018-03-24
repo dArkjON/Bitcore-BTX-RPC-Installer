@@ -88,11 +88,11 @@ if [ "$(curl -Is https://bitcore.cc/bootstrap240318.tar.gz | head -n 1 | tr -d '
 sudo -u bitcore wget https://bitcore.cc/bootstrap240318.tar.gz
 sudo -u bitcore tar -xvzf bootstrap240318.tar.gz
 sudo -u bitcore rm bootstrap240318.tar.gz
-#fi
+fi
 echo '*** Done 8/10 ***'
 echo '*** Step 9/10 - Starting BitCore Service ***'
-systemctl enable bitcored
-systemctl start bitcored
+systemctl enable bitcore
+systemctl start bitcore
 echo 'BitCore Server installed! Weeee!'
 echo '*** Done 9/10 ***'
 echo '*** Step 10/10 - Wait for wallet synchronization!***'

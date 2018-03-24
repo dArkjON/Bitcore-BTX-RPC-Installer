@@ -28,9 +28,16 @@ will be equal to "Current numbers of blocks" in local wallet (GUI - Help > Debug
 
 
 ## Switch User in Terminal
-After install you can use `su bitcore` to switch the user and with `bitcore-cli getinfo`
+After install you can use `su bitcore` to switch the user and with `bitcore-cli getinfo` you will get all info.
 
-you will get all info about your server.
+
+## Useful Stuff
+
+To generate a Account-Wallet just use : `bitcore getnewaddress <accoutname>`
+
+Your config file is located in `cd /home/bitcore/.bitcore/bitcore.conf`
+
+After changing rpcuser & rpcpassword please restart the bitcore server.
 
 
 ## **Visit us at [Telegram](https://t.me/bitcore_btx_official) // Special Thanks to : [wfthkttn](https://github.com/wfthkttn)**

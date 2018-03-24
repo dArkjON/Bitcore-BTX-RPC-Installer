@@ -76,7 +76,7 @@ yes | ufw enable
 echo '*** Done 5/10 ***'
 echo '*** Step 6/10 - Configure bitcore.conf ***'
 sudo -u bitcore mkdir /home/bitcore/.bitcore
-sudo -u bitcore echo -e "rpcuser=btxrpcnode$(openssl rand -base64 32) \nrpcpassword=$(openssl rand -base64 32) \nrpcallowip=127.0.0.1 \rpcport=8555 \nserver=1 \nlisten=1 \ndaemon=1 \nlogtimestamps=1 \naddnode=101.109.203.46 \naddnode=103.10.228.137 \naddnode=109.111.1.162 \naddnode=112.201.86.135 \naddnode=175.140.212.205 \naddnode=188.63.72.64 \naddnode=51.15.207.197 \n" > /home/bitcore/.bitcore/bitcore.conf
+sudo -u bitcore echo -e "rpcuser=btxrpcnode$(openssl rand -base64 32) \nrpcpassword=$(openssl rand -base64 32) \nrpcallowip=127.0.0.1 \nrpcport=8555 \nserver=1 \nlisten=1 \ndaemon=1 \nlogtimestamps=1 \naddnode=101.109.203.46 \naddnode=103.10.228.137 \naddnode=109.111.1.162 \naddnode=112.201.86.135 \naddnode=175.140.212.205 \naddnode=188.63.72.64 \naddnode=51.15.207.197 \n" > /home/bitcore/.bitcore/bitcore.conf
 cd /home/bitcore/.bitcore
 echo '*** Done 6/10 ***'
 echo '*** Step 7/10 - Adding bitcore daemoon as a service ***'

@@ -1,6 +1,6 @@
 
 #!/bin/bash
-# This script will install all required stuff to run a BitCore (BSD) Masternode.
+# This script will install all required stuff to run a BitCore RPC Server.
 # BitCore Repo : https://github.com/LIMXTEC/BitCore/
 # !! THIS SCRIPT NEED TO RUN AS ROOT !!
 ######################################################################

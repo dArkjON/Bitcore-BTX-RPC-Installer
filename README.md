@@ -1,6 +1,7 @@
 # Bitcore-BTX-RPC-Installer
 This script will install all required stuff to run a BitCore RPC Server.
-Just 2 simple Steps and your Server is done !.
+
+Just 2 simple Steps and your Server is done !. ***Only working for Linux Ubuntu 16.04***
 
 
 ## Download and start the script
@@ -26,7 +27,13 @@ Its loaded when "height" in message:
 will be equal to "Current numbers of blocks" in local wallet (GUI - Help > Debug > Information).
 
 
-**Visit us at [Telegram](https://t.me/bitcore_btx_official) // Special Thanks to : [wfthkttn](https://github.com/wfthkttn)**
+## Switch User in Terminal
+After install you can use `su bitcore` to switch the user and with `bitcore-cli getinfo`
+
+you will get all info about your server.
+
+
+## **Visit us at [Telegram](https://t.me/bitcore_btx_official) // Special Thanks to : [wfthkttn](https://github.com/wfthkttn)**
 
 Fork Source : https://github.com/dArkjON/BSD-Masternode-Setup-1604
 

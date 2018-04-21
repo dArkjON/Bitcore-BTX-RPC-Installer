@@ -1,4 +1,10 @@
-MAINTAINER dalijolijo <info@bitcore.cc>
+# This Dockerfile is based on script btxsetup.sh (see: https://github.com/dArkjON/Bitcore-BTX-RPC-Installer/blob/master/btxsetup.sh)
+# BitCore Repo : https://github.com/LIMXTEC/BitCore/
+# 
+# This Dockerfile will install all required stuff to run a BitCore RPC Server.
+# To build a docker image for btx-rpc-server the Dockerfile and bitcore.conf is needed.
+# 1. docker build -t btx-rpc-server
+# 2. docker push <repository>/btx-rpc-server:<tag>
 
 # Use an official Ubuntu runtime as a parent image
 FROM ubuntu:16.04
@@ -66,6 +72,7 @@ RUN echo '*** Step 3/10 - Running updates and installing required packages ***' 
 #
 RUN echo '*** Step 4/10 - Cloning and Compiling BitCore Wallet ***' && \
     cd && \
+    echo "Execute a git clone of LIMXTEC/BitCore. Please wait..." && \
     git clone https://github.com/LIMXTEC/BitCore.git && \
     cd BitCore && \
     ./autogen.sh && \

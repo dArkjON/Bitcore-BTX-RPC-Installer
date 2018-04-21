@@ -1,8 +1,9 @@
-# This Dockerfile is based on script btxsetup.sh (see: https://github.com/dArkjON/Bitcore-BTX-RPC-Installer/blob/master/btxsetup.sh)
+# BitCore RPC Server - Dockerfile (by dalijolijo / 04-2018)
+#
+# This Dockerfile will install all required stuff to run a BitCore RPC Server and is based on script btxsetup.sh (see: https://github.com/dArkjON/Bitcore-BTX-RPC-Installer/blob/master/btxsetup.sh)
 # BitCore Repo : https://github.com/LIMXTEC/BitCore/
 # 
-# This Dockerfile will install all required stuff to run a BitCore RPC Server.
-# To build a docker image for btx-rpc-server the Dockerfile and bitcore.conf is needed.
+# To build a docker image for btx-rpc-server from the Dockerfile the bitcore.conf is also needed.
 # 1. docker build -t btx-rpc-server
 # 2. docker push <repository>/btx-rpc-server:<tag>
 
@@ -33,12 +34,13 @@ RUN echo '*** Step 1/10 - creating bitcore user ***' && \
 #
 # Step 2/10 - Allocating 2GB Swapfile
 #
-# RUN echo '*** Step 2/10 - Allocating 2GB Swapfile ***' && \
-#    dd if=/dev/zero of=/swapfile bs=1M count=2048 && \
-#    mkswap /swapfile && \
-#    swapon /swapfile && \
-#    chmod 600 /swapfile && \
-#    echo '*** Done 2/10 ***'
+RUN echo '*** Step 2/10 - Allocating 2GB Swapfile ***' && \
+    echo 'not needed: skipped'
+#   dd if=/dev/zero of=/swapfile bs=1M count=2048 && \
+#   mkswap /swapfile && \
+#   swapon /swapfile && \
+#   chmod 600 /swapfile && 
+    echo '*** Done 2/10 ***'
 
 #
 # Step 3/10 - Running updates and installing required packages

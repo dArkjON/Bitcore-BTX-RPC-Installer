@@ -91,13 +91,7 @@ RUN echo '*** Step 4/10 - Cloning and Compiling BitCore Wallet ***' && \
 # Step 5/10 - Adding firewall rules
 #
 RUN echo '*** Step 5/10 - Adding firewall rules ***' && \
-    ufw logging on && \
-    ufw allow 22/tcp && \
-    ufw limit 22/tcp && \
-    ufw allow 8555/tcp && \
-    ufw default deny incoming && \
-    ufw default allow outgoing && \
-    yes | ufw enable && \
+    echo 'must be configured on the socker host: skipped' && \
     echo '*** Done 5/10 ***'
 
 #

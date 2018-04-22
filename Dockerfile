@@ -35,11 +35,7 @@ RUN echo '*** Step 1/10 - creating bitcore user ***' && \
 # Step 2/10 - Allocating 2GB Swapfile
 #
 RUN echo '*** Step 2/10 - Allocating 2GB Swapfile ***' && \
-    echo 'not needed: skipped'
-#   dd if=/dev/zero of=/swapfile bs=1M count=2048 && \
-#   mkswap /swapfile && \
-#   swapon /swapfile && \
-#   chmod 600 /swapfile && 
+    echo 'not needed: skipped' && \
     echo '*** Done 2/10 ***'
 
 #

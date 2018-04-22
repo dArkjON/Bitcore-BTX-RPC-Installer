@@ -2,6 +2,10 @@
 
 The Dockerfile will install all required stuff to run a BitCore RPC Server and is based on script btxsetup.sh (see: https://github.com/dArkjON/Bitcore-BTX-RPC-Installer/blob/master/btxsetup.sh)
 
+## Requirements
+- Linux Ubuntu 16.04 LTS
+- Running as docker host server (package docker.io installed)
+
 ## Needed files
 - Dockerfile
 - bitcore.conf

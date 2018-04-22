@@ -29,6 +29,7 @@ yes | ufw enable
 
 ## Build process
 ```
-docker build -t btx-rpc-server
+docker build -t btx-rpc-server .
+docker tag btx-rpc-server <repository>/btx-rpc-server
 docker push <repository>/btx-rpc-server:<tag>
 ```

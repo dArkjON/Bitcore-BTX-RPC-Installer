@@ -49,6 +49,7 @@ RUN echo '*** Step 3/10 - Running updates and installing required packages ***' 
                         automake \
                         autotools-dev \
                         build-essential \
+                        curl \
                         git \
                         libboost-all-dev \
                         libevent-dev \
@@ -57,7 +58,8 @@ RUN echo '*** Step 3/10 - Running updates and installing required packages ***' 
                         libtool \
                         pkg-config \
                         software-properties-common \
-                        ufw && \
+                        ufw \
+                        wget && \
     add-apt-repository -y ppa:bitcoin/bitcoin && \
     apt-get update -y && \
     apt-get upgrade -y && \

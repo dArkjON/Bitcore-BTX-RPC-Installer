@@ -111,9 +111,9 @@ RUN echo '*** Step 6/10 - Configure bitcore.conf ***' && \
     echo '*** Done 6/10 ***'
 
 #
-# Step 7/10 - Adding bitcore daemoon as a service
+# Step 7/10 - Adding bitcore daemon as a service
 #
-RUN echo '*** Step 7/10 - Adding bitcore daemoon as a service ***' && \
+RUN echo '*** Step 7/10 - Adding bitcore daemon as a service ***' && \
     mkdir /usr/lib/systemd/system && \
     echo -e "[Unit]\nDescription=BitCore's distributed currency daemon\nAfter=network.target\n\n[Service]\nUser=bitcore\nGroup=bitcore\n\nType=forking\nPIDFile=/home/bitcore/.bitcore/bitcored.pid\n\nExecStart=/usr/local/bin/bitcored -daemon -disablewallet -pid=/home/bitcore/.bitcore/bitcored.pid \\n          -conf=/home/bitcore/.bitcore/bitcore.conf -datadir=/home/bitcore/.bitcore/\n\nExecStop=-/usr/local/bin/bitcore-cli -conf=/home/bitcore/.bitcore/bitcore.conf \\n         -datadir=/home/bitcore/.bitcore/ stop\n\nRestart=always\nPrivateTmp=true\nTimeoutStopSec=60s\nTimeoutStartSec=2s\nStartLimitInterval=120s\nStartLimitBurst=5\n\n[Install]\nWantedBy=multi-user.target\n" > /usr/lib/systemd/system/bitcore.service && \
     echo '*** Done 7/10 ***'
@@ -123,9 +123,9 @@ RUN echo '*** Step 7/10 - Adding bitcore daemoon as a service ***' && \
 #
 RUN echo '*** Step 8/10 - Downloading bootstrap file ***' && \
     if [ "$(curl -Is https://bitcore.cc/$BOOTSTRAP | head -n 1 | tr -d '\r\n')" = "HTTP/1.1 200 OK" ] ; then && \
-        sudo -u bitcore wget https://bitcore.cc/$BOOTSTRAP && \
-        sudo -u bitcore tar -xvzf $BOOTSTRAP && \
-        sudo -u bitcore rm $BOOTSTRAP && \
+        wget https://bitcore.cc/$BOOTSTRAP && \
+        tar -xvzf $BOOTSTRAP && \
+        rm $BOOTSTRAP && \
     fi && \
     echo '*** Done 8/10 ***'
 

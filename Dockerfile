@@ -4,8 +4,7 @@
 # BitCore Repo : https://github.com/LIMXTEC/BitCore/
 # 
 # To build a docker image for btx-rpc-server from the Dockerfile the bitcore.conf is also needed.
-# 1. docker build -t btx-rpc-server
-# 2. docker push <repository>/btx-rpc-server:<tag>
+# See BUILD_README.md for further steps.
 
 # Use an official Ubuntu runtime as a parent image
 FROM ubuntu:16.04

@@ -102,7 +102,7 @@ RUN echo '*** Step 5/10 - Adding firewall rules ***' && \
 #
 # Step 6/10 - Configure bitcore.conf
 #
-ADD --chown=bitcore bitcore.conf /tmp
+COPY bitcore.conf /tmp
 RUN echo '*** Step 6/10 - Configure bitcore.conf ***' && \
     sudo -u bitcore mkdir /home/bitcore/.bitcore && \
     sudo -u bitcore mv /tmp/bitcore.conf /home/bitcore/.bitcore/ && \

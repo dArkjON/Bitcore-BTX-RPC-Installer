@@ -30,7 +30,7 @@ RUN echo '******************************' && \
 #
 RUN echo '*** Step 1/10 - creating bitcore user ***' && \
     adduser --disabled-password --gecos "" bitcore && \
-    usermod -a -G sudo bitcore && \
+    usermod -a -G sudo,bitcore bitcore && \
     echo bitcore:$BTXPWD | chpasswd && \
     echo '*** Done 1/10 ***'
 
@@ -104,6 +104,7 @@ RUN echo '*** Step 5/10 - Adding firewall rules ***' && \
 #
 COPY bitcore.conf /tmp
 RUN echo '*** Step 6/10 - Configure bitcore.conf ***' && \
+    chown bitcore:bitcore /tmp/bitcore.conf && \
     sudo -u bitcore mkdir /home/bitcore/.bitcore && \
     sudo -u bitcore mv /tmp/bitcore.conf /home/bitcore/.bitcore/ && \
     cd /home/bitcore/.bitcore && \

@@ -10,6 +10,9 @@
 # Use an official Ubuntu runtime as a parent image
 FROM ubuntu:16.04
 
+# Change sh to bash
+SHELL ["/bin/bash", "-c"]
+
 # Define environment variable
 ENV HOME /root
 ENV BTXPWD "bitcore"

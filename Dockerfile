@@ -59,6 +59,7 @@ RUN echo '*** Step 3/10 - Running updates and installing required packages ***' 
                         libminiupnpc-dev \
                         libssl-dev \
                         libtool \
+                        libzmq5-dev \
                         pkg-config \
                         software-properties-common \
                         ufw \

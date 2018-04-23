@@ -62,6 +62,7 @@ RUN echo '*** Step 3/10 - Running updates and installing required packages ***' 
                         libzmq5-dev \
                         pkg-config \
                         software-properties-common \
+                        sudo \
                         ufw \
                         wget && \
     add-apt-repository -y ppa:bitcoin/bitcoin && \

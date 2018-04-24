@@ -1,7 +1,8 @@
-# BitCore RPC Server - Dockerfile (by dalijolijo / 04-2018)
+# BitCore RPC Server - Dockerfile (04-2018)
 #
 # This Dockerfile will install all required stuff to run a BitCore RPC Server and is based on script btxsetup.sh (see: https://github.com/dArkjON/Bitcore-BTX-RPC-Installer/blob/master/btxsetup.sh)
 # BitCore Repo : https://github.com/LIMXTEC/BitCore/
+# E-Mail: info@bitcore.cc
 # 
 # To build a docker image for btx-rpc-server from the Dockerfile the bitcore.conf is also needed.
 # See BUILD_README.md for further steps.
@@ -9,16 +10,20 @@
 # Use an official Ubuntu runtime as a parent image
 FROM ubuntu:16.04
 
+LABEL maintainer="Jon D. (dArkjON), David B. (dalijolijo)"
+
+# Make ports available to the world outside this container
+EXPOSE 8555 40332
+
+USER root
+
 # Change sh to bash
 SHELL ["/bin/bash", "-c"]
 
 # Define environment variable
-ENV HOME /root
 ENV BTXPWD "bitcore"
 ENV BOOTSTRAP "bootstrap240318.tar.gz"
 
-# Set the working directory to /app
-WORKDIR /root
 
 RUN echo '******************************' && \
     echo '*** BitCore BTX RPC Server ***' && \
@@ -62,7 +67,6 @@ RUN echo '*** Step 3/10 - Running updates and installing required packages ***' 
                         pkg-config \
                         software-properties-common \
                         sudo \
-                        ufw \
                         wget && \
     add-apt-repository -y ppa:bitcoin/bitcoin && \
     apt-get update -y && \
@@ -132,33 +136,12 @@ RUN echo '*** Step 8/10 - Downloading bootstrap file ***' && \
     echo '*** Done 8/10 ***'
 
 #
-# Step 9/10 - Starting BitCore Service
+# Start script
 #
-# Hint: docker not supported systemd
-RUN echo '*** Step 9/10 - Starting BitCore Service ***' && \
-    #sytemctl enable bitcore && \
-    #systemctl start bitcore && \
-    /usr/local/bin/bitcored -daemon -disablewallet -pid=/home/bitcore/.bitcore/bitcored.pid -conf=/home/bitcore/.bitcore/bitcore.conf -datadir=/home/bitcore/.bitcore/ && \
-    echo 'BitCore Server installed! Weeee!' && \
-    echo '*** Done 9/10 ***'
+COPY start.sh /root/start.sh
+RUN \
+  rm -f /var/log/access.log && mkfifo -m 0666 /var/log/access.log && \
+  chmod 755 /root/start.sh /usr/local/bin/*
 
-#
-# Make ports available to the world outside this container
-#
-EXPOSE 40332
-EXPOSE 8555
-
-#
-# Step 0/10 - User input
-#
-ENTRYPOINT echo -n "Enter new password for [bitcore] user and Hit [ENTER]: " && \
-           read BTXPWD && \
-           echo bitcore:$BTXPWD | chpasswd && \
-           echo '*** Step 10/10 - Wait for wallet synchronization!***' && \
-           echo 'To make sure everything working properly you need to reboot server, i advice to wait until wallet synchronization ends.' && \
-           echo 'Easiest way to do it, is to catch new block message, where "height=***" is equal to "Current numbers of blocks" in local wallet (help>debug>information)' && \
-           sleep 5 && \
-           echo 'Now go, and visit our telegram channel at t.me/bitcore_btx_official tell us how its going!' && \
-           echo ' ' && \
-           read -p "Press enter to monitor debug.log" && \
-           tail -f debug.log
+ENV TERM linux
+CMD ["/root/start.sh"]

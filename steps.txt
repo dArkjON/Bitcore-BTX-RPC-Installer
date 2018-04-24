@@ -1,0 +1,79 @@
+STEPS TO RUN DOCKER CONTAINER
+
+Short description
+Dockerfile: Template to build docker image
+Docker Image: Can be pushed, pulled, tagged to the docker-registry
+Docker Container: Instance of a tagged docker image
+
+
+STEPS
+1) Create Dockerfile
+- no systemd permission within the docker image
+- no ufw within the docker image
+
+- Define base image
+FROM ubuntu:16.04
+
+- Define environment variables
+ENV HOME /root
+
+- Define working dir
+WORKDIR /root
+
+- Every RUN is a new layer => use of && \
+Example:
+cd && \
+ rm -rf BitCore && \
+ echo '*** Done 4/10 ***
+
+- Change form sh to bash 
+SHELL ["/bin/bash", "-c"]
+
+- Copy files into the docker image (in the same directory as the Dockerfile)
+COPY bitcore.conf /tmp
+
+- Use of if/for statements in this way
+Example:
+RUN if [ "$(curl -Is https://bitcore.cc/$BOOTSTRAP | head -n 1 | tr -d '\r\n')" = "HTTP/1.1 200 OK" ] ; then \
+ wget https://bitcore.cc/$BOOTSTRAP; \
+ tar -xvzf $BOOTSTRAP; \
+ rm $BOOTSTRAP; \
+ fi
+
+Needed Ports must be exposed
+EXPOSE 40332
+
+- Define the starting point of docker container with
+ENTRYPOINT read BTXPWD
+
+
+2) Build docker image
+docker build -t btx-rpc-server .
+
+
+3) Tag docker image
+docker tag btx-rpc-server dalijolijo/btc-rpc-server
+
+
+4) Login to hub.docker
+docker login -u dalijolijo -p"<PWD>"
+
+
+5) Push docker images
+docker push dalijolijo/btc-rpc-server
+
+
+6) Cleanup docker images
+a) Delete all stopped containers (including data-only containers)
+docker rm $(docker ps -a -q)
+
+b) Delete all 'untagged/dangling' (<none>) images
+docker rmi $(docker images -q -f dangling=true)
+
+
+7) Pull docker image
+docker pull dalijolijo/btc-rpc-server
+
+
+8) Run docker container
+docker run -d -p 22:22 -p 40332:40332 -p 8555:8555 [-e BTXPWD='<bitcore user pwd>'] [-e BOOTSTRAP='<bootstrapDDMMYY.tar.gz>'] dalijolijo/btx-rpc-server

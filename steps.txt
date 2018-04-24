@@ -1,38 +1,46 @@
 STEPS TO RUN DOCKER CONTAINER
 
 Short description
-Dockerfile: Template to build docker image
-Docker Image: Can be pushed, pulled, tagged to the docker-registry
-Docker Container: Instance of a tagged docker image
+* Dockerfile: Template to build docker image
+* Docker Image: Can be pushed, pulled, tagged to the docker-registry
+* Docker Container: Instance of a tagged docker image
+
 
 
 STEPS
 1) Create Dockerfile
-- no systemd permission within the docker image
-- no ufw within the docker image
 
-- Define base image
+* Define base image
 FROM ubuntu:16.04
 
-- Define environment variables
-ENV HOME /root
+* Needed Ports must be exposed
+EXPOSE 40332 40332
 
-- Define working dir
+* Define user during execution
+USER root
+
+* Define working dir
 WORKDIR /root
 
-- Every RUN is a new layer => use of && \
+* Change form sh to bash 
+SHELL ["/bin/bash", "-c"]
+
+* Define environment variables
+ENV BOOTSTRAP "bootstrap240318.tar.gz"
+
+* Every RUN is a new layer => use of && \
 Example:
 cd && \
  rm -rf BitCore && \
  echo '*** Done 4/10 ***
 
-- Change form sh to bash 
+* Change form sh to bash 
 SHELL ["/bin/bash", "-c"]
 
-- Copy files into the docker image (in the same directory as the Dockerfile)
+* Copy files into the docker image (in the same directory as the Dockerfile)
 COPY bitcore.conf /tmp
 
-- Use of if/for statements in this way
+* Use of if/for statements in this way
 Example:
 RUN if [ "$(curl -Is https://bitcore.cc/$BOOTSTRAP | head -n 1 | tr -d '\r\n')" = "HTTP/1.1 200 OK" ] ; then \
  wget https://bitcore.cc/$BOOTSTRAP; \
@@ -40,11 +48,18 @@ RUN if [ "$(curl -Is https://bitcore.cc/$BOOTSTRAP | head -n 1 | tr -d '\r\n')" 
  rm $BOOTSTRAP; \
  fi
 
-Needed Ports must be exposed
-EXPOSE 40332
+* Define the starting point of docker container
+Example:
+COPY start.sh /root/start.sh
+RUN \
+ rm -f /var/log/access.log && mkfifo -m 0666 /var/log/access.log && \
+ chmod 755 /root/start.sh /usr/local/bin/*
+ENV TERM linux
+CMD ["/root/start.sh"]
 
-- Define the starting point of docker container with
-ENTRYPOINT read BTXPWD
+Hints:
+- no systemd permission within the docker image => run daemon in foreground
+- no ufw within the docker image, but configuration on docker host needed 
 
 
 2) Build docker image

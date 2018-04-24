@@ -9,6 +9,7 @@ The Dockerfile will install all required stuff to run a BitCore RPC Server and i
 ## Needed files
 - Dockerfile
 - bitcore.conf
+- start.sh
 
 ## Allocating 2GB Swapfile
 Create a swapfile to speed up the building process. Recommended if not enough RAM available on your docker host server.

@@ -52,7 +52,7 @@ docker build -t btx-rpc-server .
 
 
 3) Tag docker image
-docker tag btx-rpc-server dalijolijo/btc-rpc-server
+docker tag btx-rpc-server dalijolijo/btx-rpc-server
 
 
 4) Login to hub.docker
@@ -60,7 +60,7 @@ docker login -u dalijolijo -p"<PWD>"
 
 
 5) Push docker images
-docker push dalijolijo/btc-rpc-server
+docker push dalijolijo/btx-rpc-server
 
 
 6) Cleanup docker images
@@ -72,7 +72,7 @@ docker rmi $(docker images -q -f dangling=true)
 
 
 7) Pull docker image
-docker pull dalijolijo/btc-rpc-server
+docker pull dalijolijo/btx-rpc-server
 
 
 8) Run docker container

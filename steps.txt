@@ -6,7 +6,6 @@ Short description
 * Docker Container: Instance of a tagged docker image
 
 
-
 STEPS
 1) Create Dockerfile
 
@@ -91,4 +90,7 @@ docker pull dalijolijo/btx-rpc-server
 
 
 8) Run docker container
-docker run -d -p 22:22 -p 40332:40332 -p 8555:8555 [-e BTXPWD='<bitcore user pwd>'] [-e BOOTSTRAP='<bootstrapDDMMYY.tar.gz>'] dalijolijo/btx-rpc-server
+docker run -p 40332:40332 -p 8555:8555 [-e BTXPWD='<bitcore user pwd>'] [-e BOOTSTRAP='<bootstrapDDMMYY.tar.gz>'] dalijolijo/btx-rpc-server
+
+9) Debbuging within a container after run
+docker run -p 40332:40332 -p 8555:8555 --entrypoint bash [-e BTXPWD='<bitcore user pwd>'] [-e BOOTSTRAP='<bootstrapDDMMYY.tar.gz>'] dalijolijo/btx-rpc-server

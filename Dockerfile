@@ -14,7 +14,7 @@ LABEL maintainer="Jon D. (dArkjON), David B. (dalijolijo)"
 LABEL version="0.1"
 
 # Make ports available to the world outside this container
-EXPOSE 8555 40332
+EXPOSE 8555 9051 40332
 
 USER root
 

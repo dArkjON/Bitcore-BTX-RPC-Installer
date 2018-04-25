@@ -69,6 +69,7 @@ RUN echo '*** Step 3/10 - Running updates and installing required packages ***' 
                         screen \
                         software-properties-common \
                         sudo \
+                        supervisor \
                         vim \
                         wget && \
     add-apt-repository -y ppa:bitcoin/bitcoin && \
@@ -137,12 +138,17 @@ RUN echo '*** Step 8/10 - Downloading bootstrap file ***' && \
     echo '*** Done 8/10 ***'
 
 #
+# Supervisor Configuration
+#
+COPY *.sv.conf /etc/supervisor/conf.d/
+
+#
 # Start script
 #
-COPY start.sh /root/start.sh
+COPY start.sh /usr/local/bin/start.sh
 RUN \
   rm -f /var/log/access.log && mkfifo -m 0666 /var/log/access.log && \
   chmod 755 /root/start.sh /usr/local/bin/*
 
 ENV TERM linux
-CMD ["/root/start.sh"]
+CMD ["/usr/local/bin/start.sh"]

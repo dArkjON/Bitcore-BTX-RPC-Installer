@@ -9,7 +9,7 @@ The Dockerfile will install all required stuff to run a BitCore RPC Server and i
 ## Needed files
 - Dockerfile
 - bitcore.conf
-- supervisord.conf
+- bitcored.sv.conf
 - start.sh
 
 ## Allocating 2GB Swapfile

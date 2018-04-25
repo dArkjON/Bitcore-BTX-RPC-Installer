@@ -13,7 +13,7 @@ STEPS
 FROM ubuntu:16.04
 
 * Needed Ports must be exposed
-EXPOSE 40332 40332
+EXPOSE 8555 9051 40332
 
 * Define user during execution
 USER root

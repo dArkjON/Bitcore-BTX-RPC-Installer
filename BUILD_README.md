@@ -33,9 +33,14 @@ ufw default allow outgoing
 yes | ufw enable
 ```
 
-## Build process
+## Build docker image
 ```
 docker build [--build-arg BTXPWD='<bitcore user pwd>'] [--build-arg BOOTSTRAP='<bootstrapDDMMYY.tar.gz>'] -t btx-rpc-server .
+```
+
+## Push docker image to hub.docker
+```
 docker tag btx-rpc-server <repository>/btx-rpc-server
+docker login -u dalijolijo -p"<PWD>"
 docker push <repository>/btx-rpc-server:<tag>
 ```

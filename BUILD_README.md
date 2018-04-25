@@ -35,7 +35,7 @@ yes | ufw enable
 
 ## Build process
 ```
-docker build -t btx-rpc-server .
+docker build [--build-arg BTXPWD='<bitcore user pwd>'] [--build-arg BOOTSTRAP='<bootstrapDDMMYY.tar.gz>'] -t btx-rpc-server .
 docker tag btx-rpc-server <repository>/btx-rpc-server
 docker push <repository>/btx-rpc-server:<tag>
 ```

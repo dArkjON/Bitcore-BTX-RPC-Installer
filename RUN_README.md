@@ -19,6 +19,6 @@ docker run -p 40332:40332 -p 8555:8555 --entrypoint bash dalijolijo/btx-rpc-serv
 Please execute "docker run" in (2) before you execute this commands:
 ```
 docker exec -it btx-rpc-server bash
-  container #> cat /home/bitcore/.bitcore/debug.log
-  container #> cat /var/log/supervisor/supervisord.log
+  <container># cat /home/bitcore/.bitcore/debug.log
+  <container># cat /var/log/supervisor/supervisord.log
 ```

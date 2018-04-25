@@ -132,8 +132,8 @@ RUN echo '*** Step 7/10 - Adding bitcore daemon ***' && \
 RUN echo '*** Step 8/10 - Downloading bootstrap file ***' && \
     if [ "$(curl -Is https://bitcore.cc/$BOOTSTRAP | head -n 1 | tr -d '\r\n')" = "HTTP/1.1 200 OK" ] ; then \
         wget https://bitcore.cc/$BOOTSTRAP; \
-        chown bitcore:bitcore bootstrap.dat; \ 
         tar -xvzf $BOOTSTRAP; \
+        chown bitcore:bitcore bootstrap.dat; \
         rm $BOOTSTRAP; \
     fi && \
     echo '*** Done 8/10 ***'

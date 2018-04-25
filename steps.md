@@ -8,46 +8,46 @@
 
 ## STEPS
 ### 1) Create Dockerfile
-Define base image
+#### Define base image
 ```
 FROM ubuntu:16.04
 ```
-Needed Ports must be exposed
+#### Needed Ports must be exposed
 ```
 EXPOSE 8555 9051 40332
 ```
-Define user during execution
+#### Define user during execution
 ```
 USER root
 ```
-Define working dir
+#### Define working dir
 ```
 WORKDIR /root
 ```
-Change form sh to bash 
+#### Change form sh to bash 
 ```
 SHELL ["/bin/bash", "-c"]
 ```
-Define environment variables
+#### Define environment variables
 ```
 ENV BOOTSTRAP "bootstrap240318.tar.gz"
 ```
-Every RUN is a new layer => use of && \
+#### Every RUN is a new layer => use of && \
 Example:
 ```
 cd && \
  rm -rf BitCore && \
  echo '*** Done 4/10 ***
 ```
-Change form sh to bash 
+#### Change form sh to bash 
 ```
 SHELL ["/bin/bash", "-c"]
 ```
-Copy files into the docker image (in the same directory as the Dockerfile)
+#### Copy files into the docker image (in the same directory as the Dockerfile)
 ```
 COPY bitcore.conf /tmp
 ```
-Use of if/for statements in this way
+#### Use of if/for statements in this way
 Example:
 ```
 RUN if [ "$(curl -Is https://bitcore.cc/$BOOTSTRAP | head -n 1 | tr -d '\r\n')" = "HTTP/1.1 200 OK" ] ; then \
@@ -56,7 +56,7 @@ RUN if [ "$(curl -Is https://bitcore.cc/$BOOTSTRAP | head -n 1 | tr -d '\r\n')" 
  rm $BOOTSTRAP; \
  fi
 ```
-Define the starting point of docker container
+#### Define the starting point of docker container
 Example:
 ```
 COPY start.sh /root/start.sh

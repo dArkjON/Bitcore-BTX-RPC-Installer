@@ -153,7 +153,7 @@ VOLUME /var/log
 COPY start.sh /usr/local/bin/start.sh
 RUN \
   rm -f /var/log/access.log && mkfifo -m 0666 /var/log/access.log && \
-  chmod 755 /root/start.sh /usr/local/bin/*
+  chmod 755 /usr/local/bin/*
 
 ENV TERM linux
 CMD ["/usr/local/bin/start.sh"]

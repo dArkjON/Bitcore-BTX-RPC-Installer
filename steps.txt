@@ -62,7 +62,7 @@ Hints:
 
 
 2) Build docker image
-docker build -t btx-rpc-server .
+docker build [--build-arg BTXPWD='<bitcore user pwd>'] [--build-arg BOOTSTRAP='<bootstrapDDMMYY.tar.gz>'] -t btx-rpc-server .
 
 
 3) Tag docker image
@@ -90,7 +90,7 @@ docker pull dalijolijo/btx-rpc-server
 
 
 8) Run docker container
-docker run -p 40332:40332 -p 8555:8555 [-e BTXPWD='<bitcore user pwd>'] [-e BOOTSTRAP='<bootstrapDDMMYY.tar.gz>'] dalijolijo/btx-rpc-server
+docker run -p 40332:40332 -p 8555:8555 dalijolijo/btx-rpc-server
 
 9) Debbuging within a container after run
-docker run -p 40332:40332 -p 8555:8555 --entrypoint bash [-e BTXPWD='<bitcore user pwd>'] [-e BOOTSTRAP='<bootstrapDDMMYY.tar.gz>'] dalijolijo/btx-rpc-server
+docker run -p 40332:40332 -p 8555:8555 --entrypoint bash dalijolijo/btx-rpc-server

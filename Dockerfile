@@ -11,6 +11,7 @@
 FROM ubuntu:16.04
 
 LABEL maintainer="Jon D. (dArkjON), David B. (dalijolijo)"
+LABEL version="0.1"
 
 # Make ports available to the world outside this container
 EXPOSE 8555 40332

@@ -141,7 +141,7 @@ RUN echo '*** Step 8/10 - Downloading bootstrap file ***' && \
 #
 # Supervisor Configuration
 #
-COPY supervisord.conf /etc/supervisor/supervisord.conf
+COPY *.sv.conf /etc/supervisor/conf.d/
 
 #
 # Logging outside docker container

@@ -118,7 +118,7 @@ docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -d [-e
 ```
 
 
-## USE OF VALUME (FILE SHARING)
+## USE OF VOLUME (FILE SHARING)
 If the Dockerfile define the ```VOLUME``` you can share files between docker host and docker container.
 
 ### Example:

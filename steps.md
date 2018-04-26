@@ -98,7 +98,7 @@ docker ps
 
 ### 9) Debbuging within a container after run
 ```
-docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --entrypoint bash dalijolijo/btx-rpc-server
+docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -d [-e BTXPWD='<PWD>'] --entrypoint bash dalijolijo/btx-rpc-server
 ```
 
 ### 10) Debbuging within a container (after start.sh execution)

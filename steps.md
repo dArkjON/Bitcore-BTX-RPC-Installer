@@ -96,18 +96,18 @@ docker run --rm -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -
 docker ps
 ```
 
-### 9) Debbuging within a container after run
-```
-docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -d [-e BTXPWD='<PWD>'] --entrypoint bash dalijolijo/btx-rpc-server
-```
-
-### 10) Debbuging within a container (after start.sh execution)
+### 9) Debbuging within a container (after start.sh execution)
 Please execute "docker run" in 9) before you execute this command:
 ```
 docker ps
 docker exec -it btx-rpc-server bash
-container# cat /home/bitcore/.bitcore/debug.log
-container# supervisorctl status bitcored
-container# cat /var/log/supervisor/supervisord.log
-container# sudo -u bitcore bitcore-cli getinfo
+  container# cat /home/bitcore/.bitcore/debug.log
+  container# supervisorctl status bitcored
+  container# cat /var/log/supervisor/supervisord.log
+  container# sudo -u bitcore bitcore-cli getinfo
+```
+
+### 10) Debbuging within a container during run (skip start.sh execution)
+```
+docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -d [-e BTXPWD='<PWD>'] --entrypoint bash dalijolijo/btx-rpc-server
 ```

@@ -107,5 +107,7 @@ Please execute "docker run" in 9) before you execute this command:
 docker ps
 docker exec -it btx-rpc-server bash
 container# cat /home/bitcore/.bitcore/debug.log
+container# supervisorctl status bitcored
 container# cat /var/log/supervisor/supervisord.log
+container# sudo -u bitcore bitcore-cli getinfo
 ```

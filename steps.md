@@ -96,8 +96,10 @@ docker run --rm -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -
 docker ps
 ```
 
-### 9) Debbuging within a container (after start.sh execution)
-Please execute "docker run" in 9) before you execute this command:
+## DEBUGGING
+
+### A) Debbuging within a container (after start.sh execution)
+Please execute "docker run" in 8) before you execute this command:
 ```
 docker ps
 docker exec -it btx-rpc-server bash
@@ -110,7 +112,51 @@ docker exec -it btx-rpc-server bash
   bitcore@container# bitcore-cli getinfo
 ```
 
-### 10) Debbuging within a container during run (skip start.sh execution)
+### B) Debbuging within a container during run (skip start.sh execution)
 ```
 docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -d [-e BTXPWD='<PWD>'] --entrypoint bash dalijolijo/btx-rpc-server
 ```
+
+
+## USE OF VALUME (FILE SHARING)
+If the Dockerfile define the ```VOLUME``` you can share files between docker host and docker container.
+
+### Example:
+
+```VOLUME /var/log```
+
+To find out the share directory you need the name of the mounted volume:
+```
+docker inspect -f "{{json .Mounts}}" btx-rpc-server | jq .
+[
+  {
+    "Propagation": "",
+    "RW": true,
+    "Mode": "",
+    "Driver": "local",
+    "Destination": "/var/log",
+    "Source": "/var/lib/docker/volumes/1092068a8200e64d27a1f5971fba1078980ccd20616119474b59af1557332307/_data",
+    "Name": "1092068a8200e64d27a1f5971fba1078980ccd20616119474b59af1557332307",
+    "Type": "volume"
+  }
+]
+```
+
+Use the "Name" value to find out where you can find /var/log on the docker host
+```
+docker volume inspect 1092068a8200e64d27a1f5971fba1078980ccd20616119474b59af1557332307
+[
+    {
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/1092068a8200e64d27a1f5971fba1078980ccd20616119474b59af1557332307/_data",
+        "Name": "1092068a8200e64d27a1f5971fba1078980ccd20616119474b59af1557332307",
+        "Options": {},
+        "Scope": "local"
+    }
+]
+```
+Here is the mapping:
+* DOCKERHOST: ```/var/lib/docker/volumes/1092068a8200e64d27a1f5971fba1078980ccd20616119474b59af1557332307/_data```
+* DOCKER CONTAINER: ```/var/log```
+

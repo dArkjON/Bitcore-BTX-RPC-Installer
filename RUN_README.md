@@ -16,10 +16,13 @@ Please execute "docker run" in (2) before you execute this commands:
 ```
 docker ps
 docker exec -it btx-rpc-server bash
-  container# cat /home/bitcore/.bitcore/debug.log
-  container# supervisorctl status bitcored
-  container# cat /var/log/supervisor/supervisord.log
-  container# sudo -u bitcore bitcore-cli getinfo
+  # you are inside the btx-rpc-server container
+  root@container# supervisorctl status bitcored
+  root@container# cat /var/log/supervisor/supervisord.log
+  # Change to bitcore user
+  root@container# sudo su bitcore
+  bitcore@container# cat /home/bitcore/.bitcore/debug.log
+  bitcore@container# bitcore-cli getinfo
 ```
 
 ### (4) Debbuging within a container during run (skip start.sh execution)

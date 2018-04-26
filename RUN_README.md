@@ -21,7 +21,8 @@ Please execute "docker run" in (2) before you execute this commands:
 ```
 docker ps
 docker exec -it btx-rpc-server bash
-  <container># cat /var/log/supervisor/supervisord.log
-  <container># supervisorctl status
-  <container># cat /home/bitcore/.bitcore/debug.log
+  container# cat /home/bitcore/.bitcore/debug.log
+  container# supervisorctl status bitcored
+  container# cat /var/log/supervisor/supervisord.log
+  container# sudo -u bitcore bitcore-cli getinfo
 ```

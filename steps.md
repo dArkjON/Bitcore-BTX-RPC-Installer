@@ -141,21 +141,6 @@ docker inspect -f "{{json .Mounts}}" btx-rpc-server | jq .
   }
 ]
 ```
-
-Use the "Name" value to find out where you can find /var/log on the docker host
-```
-docker volume inspect 1092068a8200e64d27a1f5971fba1078980ccd20616119474b59af1557332307
-[
-    {
-        "Driver": "local",
-        "Labels": null,
-        "Mountpoint": "/var/lib/docker/volumes/1092068a8200e64d27a1f5971fba1078980ccd20616119474b59af1557332307/_data",
-        "Name": "1092068a8200e64d27a1f5971fba1078980ccd20616119474b59af1557332307",
-        "Options": {},
-        "Scope": "local"
-    }
-]
-```
 Here is the mapping:
 * DOCKERHOST: ```/var/lib/docker/volumes/1092068a8200e64d27a1f5971fba1078980ccd20616119474b59af1557332307/_data```
 * DOCKER CONTAINER: ```/var/log```

@@ -19,7 +19,7 @@
 #### Change form sh to bash 
 ```SHELL ["/bin/bash", "-c"]```
 #### Define environment variables
-```ENV BOOTSTRAP "bootstrap240318.tar.gz" ```
+```ENV BTXPWD "xyz" ```
 #### Every RUN is a new layer
 Example:
 ```
@@ -92,7 +92,7 @@ docker pull dalijolijo/btx-rpc-server
 
 ### 8) Run docker container
 ```
-docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -v /home/bitcore:/home/bitcore:rw -d btx-rpc-server
+docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -v /home/bitcore:/home/bitcore:rw -d dalijolijo/btx-rpc-server
 docker ps
 ```
 
@@ -114,7 +114,7 @@ docker exec -it btx-rpc-server bash
 
 ### B) Debbuging within a container during run (skip start.sh execution)
 ```
-docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -v /home/bitcore:/home/bitcore:rw btx-rpc-server
+docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -v /home/bitcore:/home/bitcore:rw --entrypoint bash dalijolijo/btx-rpc-server
 ```
 
 

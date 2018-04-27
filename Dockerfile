@@ -23,8 +23,6 @@ SHELL ["/bin/bash", "-c"]
 
 # Define environment variable
 ENV BTXPWD "bitcore"
-ENV BOOTSTRAP "bootstrap240318.tar.gz"
-
 
 RUN echo '******************************' && \
     echo '*** BitCore BTX RPC Server ***' && \
@@ -66,7 +64,6 @@ RUN echo '*** Step 3/10 - Running updates and installing required packages ***' 
                         libtool \
                         libzmq5-dev \
                         pkg-config \
-                        screen \
                         software-properties-common \
                         sudo \
                         supervisor \
@@ -114,9 +111,8 @@ RUN echo '*** Step 5/10 - Adding firewall rules ***' && \
 COPY bitcore.conf /tmp
 RUN echo '*** Step 6/10 - Configure bitcore.conf ***' && \
     chown bitcore:bitcore /tmp/bitcore.conf && \
-    sudo -u bitcore mkdir /home/bitcore/.bitcore && \
+    sudo -u bitcore mkdir -p /home/bitcore/.bitcore && \
     sudo -u bitcore mv /tmp/bitcore.conf /home/bitcore/.bitcore/ && \
-    cd /home/bitcore/.bitcore && \
     echo '*** Done 6/10 ***'
 
 #
@@ -127,18 +123,6 @@ RUN echo '*** Step 7/10 - Adding bitcore daemon ***' && \
     echo '*** Done 7/10 ***'
 
 #
-# Step 8/10 - Downloading bootstrap file
-#
-RUN echo '*** Step 8/10 - Downloading bootstrap file ***' && \
-    if [ "$(curl -Is https://bitcore.cc/$BOOTSTRAP | head -n 1 | tr -d '\r\n')" = "HTTP/1.1 200 OK" ] ; then \
-        cd /home/bitcore/; \
-        sudo -u bitcore wget https://bitcore.cc/$BOOTSTRAP; \
-        sudo -u bitcore tar -xvzf $BOOTSTRAP; \
-        rm $BOOTSTRAP; \
-    fi && \
-    echo '*** Done 8/10 ***'
-
-#
 # Supervisor Configuration
 #
 COPY *.sv.conf /etc/supervisor/conf.d/
@@ -147,11 +131,6 @@ COPY *.sv.conf /etc/supervisor/conf.d/
 # Logging outside docker container
 #
 VOLUME /var/log
-
-#
-# Bitcore files are available outside the docker container
-#
-VOLUME /home/bitcore/
 
 #
 # Start script

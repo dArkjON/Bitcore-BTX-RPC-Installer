@@ -29,3 +29,9 @@ docker exec -it btx-rpc-server bash
 ```
 docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -v /home/bitcore:/home/bitcore:rw --entrypoint bash dalijolijo/btx-rpc-server
 ```
+
+### (5) Stop docker container
+```
+docker stop dalijolijo/btx-rpc-server
+docker rm dalijolijo/btx-rpc-server
+```

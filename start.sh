@@ -6,6 +6,7 @@ BOOTSTRAP='bootstrap240318.tar.gz'
 #
 # Step 8/10 - Downloading bootstrap file
 #
+mkdir -p /home/bitcore/.bitcore
 chown -R bitcore:bitcore /home/bitcore
 cd /home/bitcore/.bitcore
 printf "** Step 8/10 - Downloading bootstrap file ***"

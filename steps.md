@@ -57,7 +57,7 @@ CMD ["/root/start.sh"]
 
 ### 2) Build docker image
 ```
-docker build [--build-arg BTXPWD='<bitcore user pwd>'] [--build-arg BOOTSTRAP='<bootstrapDDMMYY.tar.gz>'] -t btx-rpc-server .
+docker build [--build-arg BTXPWD='<bitcore user pwd>'] -t btx-rpc-server .
 ```
 
 ### 3) Tag docker image
@@ -92,7 +92,7 @@ docker pull dalijolijo/btx-rpc-server
 
 ### 8) Run docker container
 ```
-docker run --rm -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -d [-e BTXPWD='<PWD>'] dalijolijo/btx-rpc-server
+docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -v /home/bitcore:/home/bitcore:rw -d btx-rpc-server
 docker ps
 ```
 
@@ -114,7 +114,7 @@ docker exec -it btx-rpc-server bash
 
 ### B) Debbuging within a container during run (skip start.sh execution)
 ```
-docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -d [-e BTXPWD='<PWD>'] --entrypoint bash dalijolijo/btx-rpc-server
+docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -v /home/bitcore:/home/bitcore:rw btx-rpc-server
 ```
 
 

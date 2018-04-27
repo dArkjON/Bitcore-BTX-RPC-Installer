@@ -46,6 +46,6 @@ docker build [--build-arg BTXPWD='<bitcore user pwd>'] [--build-arg BOOTSTRAP='<
 ## Push docker image to hub.docker
 ```
 docker tag btx-rpc-server <repository>/btx-rpc-server
-docker login -u dalijolijo -p"<PWD>"
+docker login -u <repository> -p"<PWD>"
 docker push <repository>/btx-rpc-server:<tag>
 ```

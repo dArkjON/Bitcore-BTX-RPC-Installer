@@ -14,6 +14,8 @@ docker ps
 ### (3) Debbuging within a container (after start.sh execution)
 Please execute "docker run" in (2) before you execute this commands:
 ```
+tail -f /home/bitcore/.bitcore/debug.log
+
 docker ps
 docker exec -it btx-rpc-server bash
   # you are inside the btx-rpc-server container

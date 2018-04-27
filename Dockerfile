@@ -149,6 +149,11 @@ COPY *.sv.conf /etc/supervisor/conf.d/
 VOLUME /var/log
 
 #
+# Bitcore files are available outside the docker container
+#
+VOLUME /home/bitcore/
+
+#
 # Start script
 #
 COPY start.sh /usr/local/bin/start.sh

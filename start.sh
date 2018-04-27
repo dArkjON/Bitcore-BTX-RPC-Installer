@@ -1,6 +1,21 @@
 #!/bin/bash
 set -u
 
+BOOTSTRAP='bootstrap240318.tar.gz'
+
+#
+# Step 8/10 - Downloading bootstrap file
+#
+chown -R bitcore:bitcore /home/bitcore
+cd /home/bitcore/.bitcore
+printf "** Step 8/10 - Downloading bootstrap file ***"
+if [ "$(curl -Is https://bitcore.cc/$BOOTSTRAP | head -n 1 | tr -d '\r\n')" = "HTTP/1.1 200 OK" ] ; then \
+        sudo -u bitcore wget https://bitcore.cc/$BOOTSTRAP; \
+        sudo -u bitcore tar -xvzf $BOOTSTRAP; \
+        rm $BOOTSTRAP; \
+fi
+printf "*** Done 8/10 ***"
+
 #
 # Step 9/10 - Starting BitCore Service
 #

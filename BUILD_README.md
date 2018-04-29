@@ -40,7 +40,7 @@ yes | ufw enable
 
 ## Build docker image
 ```
-docker build [--build-arg BTXPWD='<bitcore user pwd>'] [--build-arg BOOTSTRAP='<bootstrapDDMMYY.tar.gz>'] -t btx-rpc-server .
+docker build [--build-arg BTXPWD='<bitcore user pwd>'] -t btx-rpc-server .
 ```
 
 ## Push docker image to hub.docker

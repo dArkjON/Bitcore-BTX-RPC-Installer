@@ -62,17 +62,17 @@ docker build [--build-arg BTXPWD='<bitcore user pwd>'] -t btx-rpc-server .
 
 ### 3) Tag docker image
 ```
-docker tag btx-rpc-server dalijolijo/btx-rpc-server
+docker tag btx-rpc-server <repository>/btx-rpc-server
 ```
 
 ### 4) Login to hub.docker
 ```
-docker login -u dalijolijo -p"<PWD>"
+docker login -u <repository> -p"<PWD>"
 ```
 
 ### 5) Push docker images
 ```
-docker push dalijolijo/btx-rpc-server
+docker push <repository>/btx-rpc-server
 ```
 
 ### 6) Cleanup docker images
@@ -87,12 +87,12 @@ docker rmi $(docker images -q -f dangling=true)
 
 ### 7) Pull docker image
 ```
-docker pull dalijolijo/btx-rpc-server
+docker pull <repository>/btx-rpc-server
 ```
 
 ### 8) Run docker container
 ```
-docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -v /home/bitcore:/home/bitcore:rw -d dalijolijo/btx-rpc-server
+docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -v /home/bitcore:/home/bitcore:rw -d <repository>/btx-rpc-server
 docker ps
 ```
 
@@ -115,7 +115,7 @@ docker exec -it btx-rpc-server bash
 
 ### B) Debbuging within a container during run (skip start.sh execution)
 ```
-docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -v /home/bitcore:/home/bitcore:rw --entrypoint bash dalijolijo/btx-rpc-server
+docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -v /home/bitcore:/home/bitcore:rw --entrypoint bash <repository>/btx-rpc-server
 ```
 
 

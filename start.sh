@@ -2,7 +2,6 @@
 set -u
 
 BOOTSTRAP='bootstrap.tar.gz'
-DIR='/home/bitcore/.bitcore/'
 
 #
 # Step 8/10 - Downloading bootstrap file

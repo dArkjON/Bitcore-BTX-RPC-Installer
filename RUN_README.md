@@ -7,7 +7,7 @@ docker pull <repository>/btx-rpc-server
 
 ### (2) Run docker container
 ```
-docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -v /home/bitcore:/home/bitcore:rw -d <repository>/btx-rpc-server
+docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -e BTXPWD='NEW_BTX_PWD' -v /home/bitcore:/home/bitcore:rw -d <repository>/btx-rpc-server
 docker ps
 ```
 
@@ -29,7 +29,7 @@ docker exec -it btx-rpc-server bash
 
 ### (4) Debbuging within a container during run (skip start.sh execution)
 ```
-docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -v /home/bitcore:/home/bitcore:rw --entrypoint bash <repository>/btx-rpc-server
+docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -e BTXPWD='NEW_BTX_PWD' -v /home/bitcore:/home/bitcore:rw --entrypoint bash <repository>/btx-rpc-server
 ```
 
 ### (5) Stop docker container

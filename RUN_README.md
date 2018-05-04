@@ -1,18 +1,30 @@
 # BitCore RPC Server - Run Docker Image
 
-### (1) Pull docker image
+## Adding firewall rules
+Open needed ports on your docker host server.
+```
+ufw logging on
+ufw allow 22/tcp
+ufw limit 22/tcp
+ufw allow 8555/tcp
+ufw default deny incoming 
+ufw default allow outgoing 
+yes | ufw enable
+```
+
+## Pull docker image
 ```
 docker pull <repository>/btx-rpc-server
 ```
 
-### (2) Run docker container
+## Run docker container
 ```
 docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -e BTXPWD='NEW_BTX_PWD' -v /home/bitcore:/home/bitcore:rw -d <repository>/btx-rpc-server
 docker ps
 ```
 
-### (3) Debbuging within a container (after start.sh execution)
-Please execute "docker run" in (2) before you execute this commands:
+## Debbuging within a container (after start.sh execution)
+Please execute ```docker run``` without option ```--entrypoint bash``` before you execute this commands:
 ```
 tail -f /home/bitcore/.bitcore/debug.log
 
@@ -27,12 +39,12 @@ docker exec -it btx-rpc-server bash
   bitcore@container# bitcore-cli getinfo
 ```
 
-### (4) Debbuging within a container during run (skip start.sh execution)
+## Debbuging within a container during run (skip start.sh execution)
 ```
 docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server -e BTXPWD='NEW_BTX_PWD' -v /home/bitcore:/home/bitcore:rw --entrypoint bash <repository>/btx-rpc-server
 ```
 
-### (5) Stop docker container
+## Stop docker container
 ```
 docker stop btx-rpc-server
 docker rm btx-rpc-server

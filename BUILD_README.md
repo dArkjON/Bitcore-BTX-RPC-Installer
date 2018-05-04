@@ -26,18 +26,6 @@ mkswap /swapfile
 swapon /swapfile
 ```
 
-## Adding firewall rules
-Open needed ports on your docker host server.
-```
-ufw logging on
-ufw allow 22/tcp
-ufw limit 22/tcp
-ufw allow 8555/tcp
-ufw default deny incoming 
-ufw default allow outgoing 
-yes | ufw enable
-```
-
 ## Build docker image
 ```
 docker build [--build-arg BTXPWD='<bitcore user pwd>'] -t btx-rpc-server .

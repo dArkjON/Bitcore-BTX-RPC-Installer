@@ -24,6 +24,20 @@ if [[ -r /etc/os-release ]]; then
 fi
 
 #
+# Firewall settings (for Ubuntu)
+#
+ufw logging on
+ufw allow 22/tcp
+ufw limit 22/tcp
+ufw allow 8555/tcp
+ufw allow 40332/tcp
+# if other services run on other ports, they will be blocked!
+#ufw default deny incoming 
+ufw default allow outgoing 
+yes | ufw enable
+
+
+#
 # Installation of docker package
 #
 apt-get update

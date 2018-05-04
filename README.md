@@ -1,11 +1,12 @@
 # Bitcore-BTX-RPC-Installer
-# OPTION 1: installation with script 
+## OPTION 1: Installation with script 
 This script will install all required stuff to run a BitCore RPC Server.
 
-Just 2 simple Steps and your Server is done !
+Just 2 simple Steps and your Server is done!
+
 ***Only working for Linux Ubuntu 16.04 LTS***
 
-## Download and start the script
+### Download and start the script
 Login as root, then do:
 
 ```
@@ -22,13 +23,18 @@ Its loaded when "height" in message:
 
 Will be equal to "Current numbers of blocks" in local wallet (GUI - Help > Debug > Information).
 
-## Switch User in Terminal
+### Switch User in Terminal
 After install you can use `su bitcore` to switch the user and with `bitcore-cli getinfo` you will get all info.
 
 
-# OPTION 2: deploy as a docker container
+## OPTION 2: Deploy as a docker container
 
-## Download and start the script
+Support for the following distribution versions:
+* Ubuntu 16.04
+* Ubuntu 14.04
+* ...
+
+### Download and start the script
 Login as root, then do:
 
 ```
@@ -37,7 +43,10 @@ chmod +x btxdocker.sh
 ./btxdocker.sh
 ```
 
-For details have a look to Bitcore-BTX-RPC-Installer/BUILD_README.md and Bitcore-BTX-RPC-Installer/RUN_README.md
+### For more details to docker related stuff have a look at:
+* Bitcore-BTX-RPC-Installer/BUILD_README.md
+* Bitcore-BTX-RPC-Installer/RUN_README.md
+
 
 ## Useful Stuff
 

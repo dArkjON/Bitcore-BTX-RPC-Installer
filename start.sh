@@ -9,15 +9,6 @@ BOOTSTRAP='bootstrap.tar.gz'
 echo bitcore:${BTXPWD} | chpasswd
 
 #
-# Step 6/10 - Configure bitcore.conf
-#
-RUN echo '*** Step 6/10 - Configure bitcore.conf ***' && \
-    chown bitcore:bitcore /tmp/bitcore.conf && \
-    sudo -u bitcore mkdir -p /home/bitcore/.bitcore && \
-    sudo -u bitcore mv /tmp/bitcore.conf /home/bitcore/.bitcore/ && \
-    echo '*** Done 6/10 ***'
-
-#
 # Step 8/10 - Downloading bootstrap file
 #
 mkdir -p /home/bitcore/.bitcore
@@ -29,7 +20,6 @@ if [ ! -d /home/bitcore/.bitcore/blocks ] && [ "$(curl -Is https://bitcore.cc/${
         sudo -u bitcore tar -xvzf ${BOOTSTRAP}; \
         sudo -u bitcore rm ${BOOTSTRAP}; \
 fi
-printf "*** Done 8/10 ***"
 
 #
 # Step 9/10 - Starting BitCore Service

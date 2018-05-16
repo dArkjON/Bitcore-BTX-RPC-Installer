@@ -36,7 +36,7 @@ else
     VER=$(uname -r)
 fi
 
-if [[ $OS =~ "Ubuntu" ] && [ $VER =~ "16" ] || [[$OS =~ "ubuntu" ] && [ $VER =~ "16" ] ] ; then
+if [[ $OS =~ "Ubuntu" ]] && [[ $VER =~ "16" ]] || [[ $OS =~ "ubuntu" ]] && [[ $VER =~ "16" ]]; then
     echo "Installation for $OS ($VER)..."
 else
     echo "$OS ($VER) not supported!"

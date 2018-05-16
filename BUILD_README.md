@@ -4,11 +4,11 @@ The Dockerfile will install all required stuff to run a BitCore RPC Server and i
 
 ## Requirements
 - Linux Ubuntu 16.04 LTS
-- Running as docker host server (package docker.io installed)
+- Running as docker host server (package docker-ce installed)
 ```
 apt-get update
 apt-get upgrade -y
-apt-get install docker.io -y
+apt-get install docker-ce -y
 ```
 
 ## Needed files
@@ -16,6 +16,7 @@ apt-get install docker.io -y
 - bitcore.conf
 - bitcored.sv.conf
 - start.sh
+- btx-docker.sh
 
 ## Allocating 2GB Swapfile
 Create a swapfile to speed up the building process. Recommended if not enough RAM available on your docker host server.

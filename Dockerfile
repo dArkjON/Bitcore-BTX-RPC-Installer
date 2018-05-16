@@ -113,9 +113,11 @@ RUN echo '*** Step 7/10 - Adding bitcore daemon ***' && \
     echo '*** Done 7/10 ***'
 
 #
-# Supervisor Configuration
+# Copy Supervisor Configuration and bitcore.conf
 #
 COPY *.sv.conf /etc/supervisor/conf.d/
+COPY bitcore.conf /tmp
+
 
 #
 # Logging outside docker container

@@ -16,7 +16,6 @@ apt-get install docker-ce -y
 - bitcore.conf
 - bitcored.sv.conf
 - start.sh
-- btx-docker.sh
 
 ## Allocating 2GB Swapfile
 Create a swapfile to speed up the building process. Recommended if not enough RAM available on your docker host server.

@@ -38,9 +38,9 @@ Support for the following distribution versions:
 Login as root, then do:
 
 ```
-wget https://raw.githubusercontent.com/dArkjON/Bitcore-BTX-RPC-Installer/master/btxdocker.sh
-chmod +x btxdocker.sh
-./btxdocker.sh
+wget https://raw.githubusercontent.com/dArkjON/Bitcore-BTX-RPC-Installer/master/btx-docker.sh
+chmod +x btx-docker.sh
+./btx-docker.sh
 ```
 
 ### For more details to docker related stuff have a look at:

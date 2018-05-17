@@ -46,7 +46,6 @@ fi
 #
 # Set bitcore user pwd
 #
-echo '*** Step 0/10 - User input ***'
 echo -n "Enter new password for [bitcore] user and Hit [ENTER]: "
 read BTXPWD
 

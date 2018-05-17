@@ -12,6 +12,7 @@ echo bitcore:${BTXPWD} | chpasswd
 # Step 6/10 - Configure bitcore.conf
 #
 printf "** Step 6/10 - Configure bitcore.conf ***"
+sudo -u bitcore mkdir -p /home/bitcore/.bitcore	
 sudo -u bitcore cp /tmp/bitcore.conf /home/bitcore/.bitcore/bitcore.conf
 
 #

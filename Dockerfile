@@ -105,7 +105,7 @@ COPY bitcore.conf /tmp
 RUN echo '*** Step 6/10 - Configure bitcore.conf ***' && \	
     chown bitcore:bitcore /tmp/bitcore.conf && \	
     sudo -u bitcore mkdir -p /home/bitcore/.bitcore && \	
-    sudo -u bitcore cp /tmp/bitcore.conf /home/bitcore/.bitcore/
+    sudo -u bitcore cp /tmp/bitcore.conf /home/bitcore/.bitcore/bitcore.conf
 
 #
 # Step 7/10 - Adding bitcore daemon as a service
@@ -114,7 +114,7 @@ RUN echo '*** Step 7/10 - Adding bitcore daemon ***' && \
     echo 'docker not supported systemd: skipped'
 
 #
-# Copy Supervisor Configuration and bitcore.conf
+# Copy Supervisor Configuration
 #
 COPY *.sv.conf /etc/supervisor/conf.d/
 

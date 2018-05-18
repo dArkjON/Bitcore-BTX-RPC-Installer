@@ -37,7 +37,27 @@ else
 fi
 
 if [[ $OS =~ "Ubuntu" ]] && [[ $VER =~ "16" ]] || [[ $OS =~ "ubuntu" ]] && [[ $VER =~ "16" ]]; then
-    echo "Installation for $OS ($VER)..."
+    echo "Configuration for $OS ($VER)..."
+ 
+    # Firewall settings (for Ubuntu)
+    echo "Firewall settings"
+    ufw logging on
+    ufw allow 22/tcp
+    ufw limit 22/tcp
+    ufw allow 8555/tcp
+    ufw allow 40332/tcp
+    # if other services run on other ports, they will be blocked!
+    #ufw default deny incoming 
+    ufw default allow outgoing 
+    yes | ufw enable
+
+    # Installation further package (Ubuntu 16.04)
+    echo "Installation further package"
+    apt-get update
+    sudo apt-get install -y apt-transport-https \
+                            ca-certificates \
+                            curl \
+                            software-properties-common
 else
     echo "$OS ($VER) not supported!"
     exit
@@ -48,39 +68,6 @@ fi
 #
 echo -n "Enter new password for [bitcore] user and Hit [ENTER]: "
 read BTXPWD
-
-#
-# Firewall settings (for Ubuntu)
-#
-ufw logging on
-ufw allow 22/tcp
-ufw limit 22/tcp
-ufw allow 8555/tcp
-ufw allow 40332/tcp
-# if other services run on other ports, they will be blocked!
-#ufw default deny incoming 
-ufw default allow outgoing 
-yes | ufw enable
-
-#
-# Installation of docker-ce package (Ubuntu 16.04)
-#
-apt-get update
-sudo apt-get remove -y docker \
-                       docker-engine \
-                       docker.io
-sudo apt-get install -y apt-transport-https \
-                        ca-certificates \
-                        curl \
-                        software-properties-common
-cd /root
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
-sudo apt-get update
-sudo apt-get install docker-ce -y
 
 #
 # Pull docker images and run the docker container

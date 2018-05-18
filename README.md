@@ -30,15 +30,32 @@ After install you can use `su bitcore` to switch the user and with `bitcore-cli 
 ## OPTION 2: Deploy as a docker container
 
 Support for the following distribution versions:
-* Ubuntu 16.04
-* Ubuntu 14.04
-* ...
+* x86_64-centos-7
+* x86_64-fedora-26
+* x86_64-fedora-27
+* x86_64-fedora-28
+* x86_64-debian-wheezy
+* x86_64-debian-jessie
+* x86_64-debian-stretch
+* x86_64-debian-buster
+* x86_64-ubuntu-trusty
+* x86_64-ubuntu-xenial (tested)
+* x86_64-ubuntu-bionic
+* x86_64-ubuntu-artful
 
-### Download and start the script
+# Download the execute the docker-ce installation script
+
+Download and execute the automated docker-ce installation script - maintained by the Docker project.
+
+```
+sudo curl -sSL https://get.docker.com | sh
+```
+
+### Download and execute the script
 Login as root, then do:
 
 ```
-wget https://raw.githubusercontent.com/dArkjON/Bitcore-BTX-RPC-Installer/master/btx-docker.sh
+wget https://raw.githubusercontent.com/dalijolijo/Bitcore-BTX-RPC-Installer/master/btx-docker.sh
 chmod +x btx-docker.sh
 ./btx-docker.sh
 ```

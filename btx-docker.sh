@@ -4,7 +4,13 @@ set -u
 DOCKER_REPO='dalijolijo'
 
 #
-# Check distro version (TODO)
+# Set bitcore user pwd
+#
+echo -n "Enter new password for [bitcore] user and Hit [ENTER]: "
+read BTXPWD
+
+#
+# Check distro version for further configurations (TODO)
 #
 if [ -f /etc/os-release ]; then
     # freedesktop.org and systemd
@@ -36,7 +42,8 @@ else
     VER=$(uname -r)
 fi
 
-if [[ $OS =~ "Ubuntu" ]] && [[ $VER =~ "16" ]] || [[ $OS =~ "ubuntu" ]] && [[ $VER =~ "16" ]]; then
+# Configurations for Ubuntu
+if [[ $OS =~ "Ubuntu" ]] || [[ $OS =~ "ubuntu" ]]; then
     echo "Configuration for $OS ($VER)..."
  
     # Firewall settings (for Ubuntu)
@@ -59,15 +66,9 @@ if [[ $OS =~ "Ubuntu" ]] && [[ $VER =~ "16" ]] || [[ $OS =~ "ubuntu" ]] && [[ $V
                             curl \
                             software-properties-common
 else
-    echo "$OS ($VER) not supported!"
+    echo "Configure firewall settings for $OS ($VER) not supported!"
     exit
 fi
-
-#
-# Set bitcore user pwd
-#
-echo -n "Enter new password for [bitcore] user and Hit [ENTER]: "
-read BTXPWD
 
 #
 # Pull docker images and run the docker container

@@ -47,7 +47,7 @@ if [[ $OS =~ "Ubuntu" ]] || [[ $OS =~ "ubuntu" ]]; then
     echo "Configuration for $OS ($VER)..."
  
     # Firewall settings (for Ubuntu)
-    echo "Firewall settings"
+    echo "Setup firewall..."
     ufw logging on
     ufw allow 22/tcp
     ufw limit 22/tcp
@@ -59,14 +59,15 @@ if [[ $OS =~ "Ubuntu" ]] || [[ $OS =~ "ubuntu" ]]; then
     yes | ufw enable
 
     # Installation further package (Ubuntu 16.04)
-    echo "Installation further package"
+    echo "Install further packages..."
     apt-get update
     sudo apt-get install -y apt-transport-https \
                             ca-certificates \
                             curl \
                             software-properties-common
 else
-    echo "Configure firewall settings for $OS ($VER) not supported!"
+    echo "Automated firewall setup for $OS ($VER) not supported!"
+    echo "Please open firewall ports 22, 8555 and 40332 manually."
     exit
 fi
 

@@ -43,7 +43,7 @@ Support for the following distribution versions:
 * x86_64-ubuntu-bionic
 * x86_64-ubuntu-artful
 
-# Download the execute the docker-ce installation script
+### Download and execute the docker-ce installation script
 
 Download and execute the automated docker-ce installation script - maintained by the Docker project.
 

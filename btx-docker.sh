@@ -75,4 +75,4 @@ fi
 # Pull docker images and run the docker container
 #
 docker pull ${DOCKER_REPO}/btx-rpc-server
-docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server  -e BTXPWD='${BTXPWD}' -v /home/bitcore:/home/bitcore:rw -d ${DOCKER_REPO}/btx-rpc-server
+docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server  -e BTXPWD="${BTXPWD}" -v /home/bitcore:/home/bitcore:rw -d ${DOCKER_REPO}/btx-rpc-server

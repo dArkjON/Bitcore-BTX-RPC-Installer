@@ -12,8 +12,8 @@ echo bitcore:${BTXPWD} | chpasswd
 # Step 6/10 - Configure bitcore.conf
 #
 printf "** Step 6/10 - Configure bitcore.conf ***\n"
-sudo -u bitcore mkdir -p /home/bitcore/.bitcore	
-chown bitcore:bitcore -R /home/bitcore/
+mkdir -p /home/bitcore/.bitcore	
+chown -R bitcore:bitcore /home/bitcore/
 chown bitcore:bitcore /tmp/bitcore.conf
 sudo -u bitcore cp /tmp/bitcore.conf /home/bitcore/.bitcore/bitcore.conf
 sed -i "s/^\(rpcuser=\).*/rpcuser=btxrpcnode${BTXPWD}/" /home/bitcore/.bitcore/bitcore.conf

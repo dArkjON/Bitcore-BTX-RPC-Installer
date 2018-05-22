@@ -16,8 +16,8 @@ sudo -u bitcore mkdir -p /home/bitcore/.bitcore
 chown bitcore:bitcore -R /home/bitcore/
 chown bitcore:bitcore /tmp/bitcore.conf
 sudo -u bitcore cp /tmp/bitcore.conf /home/bitcore/.bitcore/bitcore.conf
-sed -i "s/^\(rpcuser=\).*/\rpcuser=btxrpcnode${BTXPWD}/" /home/bitcore/.bitcore/bitcore.conf
-sed -i "s/^\(rpcpassword=\).*/\rpcpassword=${BTXPWD}/" /home/bitcore/.bitcore/bitcore.conf
+sed -i "s/^\(rpcuser=\).*/rpcuser=btxrpcnode${BTXPWD}/" /home/bitcore/.bitcore/bitcore.conf
+sed -i "s/^\(rpcpassword=\).*/rpcpassword=${BTXPWD}/" /home/bitcore/.bitcore/bitcore.conf
 
 #
 # Step 8/10 - Downloading bootstrap file

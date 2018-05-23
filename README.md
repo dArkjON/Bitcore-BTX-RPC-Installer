@@ -30,18 +30,18 @@ After install you can use `su bitcore` to switch the user and with `bitcore-cli 
 ## OPTION 2: Deploy as a docker container
 
 Support for the following distribution versions:
-* x86_64-centos-7
-* x86_64-fedora-26
-* x86_64-fedora-27
-* x86_64-fedora-28
-* x86_64-debian-wheezy
-* x86_64-debian-jessie
-* x86_64-debian-stretch
-* x86_64-debian-buster
-* x86_64-ubuntu-trusty
-* x86_64-ubuntu-xenial (tested)
-* x86_64-ubuntu-bionic
-* x86_64-ubuntu-artful
+* Fedora 7 (x86_64-centos-7)
+* Fedora 26 (x86_64-fedora-26)
+* Fedora 27 (x86_64-fedora-27)
+* Fedora 28 (x86_64-fedora-28)
+* Debian 7 (x86_64-debian-wheezy)
+* Debian 8 (x86_64-debian-jessie)
+* Debian 9 (x86_64-debian-stretch)
+* Debian 10 (x86_64-debian-buster)
+* Ubuntu 14.04 LTS (x86_64-ubuntu-trusty)
+* Ubuntu 16.04 LTS (x86_64-ubuntu-xenial) - tested
+* Ubuntu 17.10 (x86_64-ubuntu-artful)
+* Ubuntu 18.04 LTS (x86_64-ubuntu-bionic)
 
 ### Download and execute the docker-ce installation script
 

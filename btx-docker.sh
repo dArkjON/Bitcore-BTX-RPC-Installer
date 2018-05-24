@@ -2,7 +2,6 @@
 set -u
 
 DOCKER_REPO="dalijolijo"
-
 CONFIG="/home/bitcore/.bitcore/bitcore.conf"
 
 #
@@ -19,7 +18,7 @@ if [[ $REUSE =~ "N" ]] || [[ $REUSE =~ "n" ]]; then
         echo -n "Enter new password for [bitcore] user and Hit [ENTER]: "
         read BTXPWD
 else
-        source /home/bitcore/.bitcore/bitcore.conf
+        source $CONFIG
         BTXPWD=$(echo $rpcpassword)
 fi
 

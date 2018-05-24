@@ -3,11 +3,25 @@ set -u
 
 DOCKER_REPO="dalijolijo"
 
+CONFIG="/home/bitcore/.bitcore/bitcore.conf"
+
 #
-# Set bitcore user pwd
+# Check if bitcore.conf already exist. Set bitcore user pwd
 #
-echo -n "Enter new password for [bitcore] user and Hit [ENTER]: "
-read BTXPWD
+REUSE="No"
+if [ -f "$CONFIG" ]
+then
+        echo -n "Found $CONFIG on your system. Do you want to re-use this existing config file? Enter Yes or No and Hit [ENTER]: "
+        read REUSE
+fi
+
+if [[ $REUSE =~ "N" ]] || [[ $REUSE =~ "n" ]]; then
+        echo -n "Enter new password for [bitcore] user and Hit [ENTER]: "
+        read BTXPWD
+else
+        source /home/bitcore/.bitcore/bitcore.conf
+        BTXPWD=$(echo $rpcpassword)
+fi
 
 #
 # Check distro version for further configurations (TODO)
@@ -74,5 +88,6 @@ fi
 #
 # Pull docker images and run the docker container
 #
+docker rm btx-rpc-server
 docker pull ${DOCKER_REPO}/btx-rpc-server
 docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server  -e BTXPWD="${BTXPWD}" -v /home/bitcore:/home/bitcore:rw -d ${DOCKER_REPO}/btx-rpc-server

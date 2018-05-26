@@ -6,9 +6,7 @@ The Dockerfile will install all required stuff to run a BitCore RPC Server and i
 - Linux Ubuntu 16.04 LTS
 - Running as docker host server (package docker-ce installed)
 ```
-apt-get update
-apt-get upgrade -y
-apt-get install docker-ce -y
+sudo curl -sSL https://get.docker.com | sh
 ```
 
 ## Needed files

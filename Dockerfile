@@ -14,7 +14,10 @@ LABEL maintainer="Jon D. (dArkjON), David B. (dalijolijo)"
 LABEL version="0.1"
 
 # Make ports available to the world outside this container
-EXPOSE 8555 9051 40332
+# DefaultPort = 8555
+# RPCPort = 8556
+# TorPort = 9051
+EXPOSE 8555 8556 9051
 
 USER root
 

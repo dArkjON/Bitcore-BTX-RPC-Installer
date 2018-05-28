@@ -65,8 +65,8 @@ if [[ $OS =~ "Ubuntu" ]] || [[ $OS =~ "ubuntu" ]]; then
     ufw allow 22/tcp
     ufw limit 22/tcp
     ufw allow 8555/tcp
+    ufw allow 8556/tcp
     ufw allow 9051/tcp
-    ufw allow 40332/tcp
     # if other services run on other ports, they will be blocked!
     #ufw default deny incoming 
     ufw default allow outgoing 
@@ -81,7 +81,7 @@ if [[ $OS =~ "Ubuntu" ]] || [[ $OS =~ "ubuntu" ]]; then
                             software-properties-common
 else
     echo "Automated firewall setup for $OS ($VER) not supported!"
-    echo "Please open firewall ports 22, 8555, 9051 and 40332 manually."
+    echo "Please open firewall ports 22, 8555, 8556 and 9051 manually."
     exit
 fi
 
@@ -90,4 +90,4 @@ fi
 #
 docker rm btx-rpc-server
 docker pull ${DOCKER_REPO}/btx-rpc-server
-docker run -p 40332:40332 -p 8555:8555 -p 9051:9051 --name btx-rpc-server  -e BTXPWD="${BTXPWD}" -v /home/bitcore:/home/bitcore:rw -d ${DOCKER_REPO}/btx-rpc-server
+docker run -p 8555:8555 -p 8556:8556 -p 9051:9051 --name btx-rpc-server  -e BTXPWD="${BTXPWD}" -v /home/bitcore:/home/bitcore:rw -d ${DOCKER_REPO}/btx-rpc-server

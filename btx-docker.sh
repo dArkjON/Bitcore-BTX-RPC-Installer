@@ -65,6 +65,7 @@ if [[ $OS =~ "Ubuntu" ]] || [[ $OS =~ "ubuntu" ]]; then
     ufw allow 22/tcp
     ufw limit 22/tcp
     ufw allow 8555/tcp
+    ufw allow 9051/tcp
     ufw allow 40332/tcp
     # if other services run on other ports, they will be blocked!
     #ufw default deny incoming 
@@ -80,7 +81,7 @@ if [[ $OS =~ "Ubuntu" ]] || [[ $OS =~ "ubuntu" ]]; then
                             software-properties-common
 else
     echo "Automated firewall setup for $OS ($VER) not supported!"
-    echo "Please open firewall ports 22, 8555 and 40332 manually."
+    echo "Please open firewall ports 22, 8555, 9051 and 40332 manually."
     exit
 fi
 

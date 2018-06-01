@@ -9,9 +9,9 @@ BOOTSTRAP='bootstrap.tar.gz'
 echo bitcore:${BTXPWD} | chpasswd
 
 #
-# Step 6/10 - Configure bitcore.conf
+# Configure bitcore.conf
 #
-printf "** Step 6/10 - Configure bitcore.conf ***\n"
+printf "** Configure bitcore.conf ***\n"
 mkdir -p /home/bitcore/.bitcore	
 chown -R bitcore:bitcore /home/bitcore/
 chown bitcore:bitcore /tmp/bitcore.conf
@@ -20,9 +20,9 @@ sed -i "s/^\(rpcuser=\).*/rpcuser=btxrpcnode${BTXPWD}/" /home/bitcore/.bitcore/b
 sed -i "s/^\(rpcpassword=\).*/rpcpassword=${BTXPWD}/" /home/bitcore/.bitcore/bitcore.conf
 
 #
-# Step 8/10 - Downloading bootstrap file
+# Downloading bootstrap file
 #
-printf "** Step 8/10 - Downloading bootstrap file ***\n"
+printf "** Downloading bootstrap file ***\n"
 cd /home/bitcore/.bitcore/
 if [ ! -d /home/bitcore/.bitcore/blocks ] && [ "$(curl -Is https://bitcore.cc/${BOOTSTRAP} | head -n 1 | tr -d '\r\n')" = "HTTP/1.1 200 OK" ] ; then \
         sudo -u bitcore wget https://bitcore.cc/${BOOTSTRAP}; \
@@ -31,8 +31,8 @@ if [ ! -d /home/bitcore/.bitcore/blocks ] && [ "$(curl -Is https://bitcore.cc/${
 fi
 
 #
-# Step 9/10 - Starting BitCore Service
+# Starting BitCore Service
 #
 # Hint: docker not supported systemd, use of supervisord
-printf "*** Step 9/10 - Starting BitCore Service ***\n"
+printf "*** Starting BitCore Service ***\n"
 exec /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf

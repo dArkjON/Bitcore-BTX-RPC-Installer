@@ -9,12 +9,18 @@ BOOTSTRAP='bootstrap.tar.gz'
 echo bitcore:${BTXPWD} | chpasswd
 
 #
+# Downloading bitcore.conf
+#
+cd /tmp/
+wget https://raw.githubusercontent.com/dalijolijo/Bitcore-BTX-RPC-Installer/master/bitcore.conf -O /tmp/bitcore.conf
+chown bitcore:bitcore /tmp/bitcore.conf
+
+#
 # Configure bitcore.conf
 #
 printf "** Configure bitcore.conf ***\n"
 mkdir -p /home/bitcore/.bitcore	
 chown -R bitcore:bitcore /home/bitcore/
-chown bitcore:bitcore /tmp/bitcore.conf
 sudo -u bitcore cp /tmp/bitcore.conf /home/bitcore/.bitcore/bitcore.conf
 sed -i "s/^\(rpcuser=\).*/rpcuser=btxrpcnode${BTXPWD}/" /home/bitcore/.bitcore/bitcore.conf
 sed -i "s/^\(rpcpassword=\).*/rpcpassword=${BTXPWD}/" /home/bitcore/.bitcore/bitcore.conf

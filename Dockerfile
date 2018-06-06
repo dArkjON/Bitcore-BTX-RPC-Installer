@@ -11,10 +11,13 @@
 FROM ubuntu:16.04
 
 LABEL maintainer="Jon D. (dArkjON), David B. (dalijolijo)"
-LABEL version="0.1"
+LABEL version="0.2"
 
 # Make ports available to the world outside this container
-EXPOSE 8555 9051 40332
+# DefaultPort = 8555
+# RPCPort = 8556
+# TorPort = 9051
+EXPOSE 8555 8556 9051
 
 USER root
 
@@ -24,30 +27,20 @@ SHELL ["/bin/bash", "-c"]
 # Define environment variable
 ENV BTXPWD "bitcore"
 
-RUN echo '******************************' && \
-    echo '*** BitCore BTX RPC Server ***' && \
-    echo '******************************'
+RUN echo '*** BitCore BTX RPC Server ***'
 
 #
-# Step 1/10 - creating bitcore user
+# Creating bitcore user
 #
-RUN echo '*** Step 1/10 - creating bitcore user ***' && \
+RUN echo '*** Creating bitcore user ***' && \
     adduser --disabled-password --gecos "" bitcore && \
     usermod -a -G sudo,bitcore bitcore && \
-    echo bitcore:$BTXPWD | chpasswd && \
-    echo '*** Done 1/10 ***'
+    echo bitcore:$BTXPWD | chpasswd
 
 #
-# Step 2/10 - Allocating 2GB Swapfile
+# Running updates and installing required packages
 #
-RUN echo '*** Step 2/10 - Allocating 2GB Swapfile ***' && \
-    echo 'not needed: skipped' && \
-    echo '*** Done 2/10 ***'
-
-#
-# Step 3/10 - Running updates and installing required packages
-#
-RUN echo '*** Step 3/10 - Running updates and installing required packages ***' && \
+RUN echo '*** Running updates and installing required packages ***' && \
     apt-get update -y && \
     apt-get dist-upgrade -y && \
     apt-get install -y  apt-utils \
@@ -73,13 +66,12 @@ RUN echo '*** Step 3/10 - Running updates and installing required packages ***' 
     apt-get update -y && \
     apt-get upgrade -y && \
     apt-get install -y  libdb4.8-dev \
-                        libdb4.8++-dev && \
-    echo '*** Done 3/10 ***'
+                        libdb4.8++-dev
 
 #
-# Step 4/10 - Cloning and Compiling BitCore Wallet
+# Cloning and Compiling BitCore Wallet
 #
-RUN echo '*** Step 4/10 - Cloning and Compiling BitCore Wallet ***' && \
+RUN echo '*** Cloning and Compiling BitCore Wallet ***' && \
     cd && \
     echo "Execute a git clone of LIMXTEC/BitCore. Please wait..." && \
     git clone https://github.com/LIMXTEC/BitCore.git && \
@@ -95,35 +87,19 @@ RUN echo '*** Step 4/10 - Cloning and Compiling BitCore Wallet ***' && \
     cp bitcore-cli /usr/local/bin && \
     chmod 775 /usr/local/bin/bitcore* && \
     cd && \
-    rm -rf BitCore && \
-    echo '*** Done 4/10 ***'
+    rm -rf BitCore
 
 #
-# Step 5/10 - Adding firewall rules
-#
-RUN echo '*** Step 5/10 - Adding firewall rules ***' && \
-    echo 'must be configured on the socker host: skipped' && \
-    echo '*** Done 5/10 ***'
+# Configure bitcore.conf	
+#	
+COPY bitcore.conf /tmp	
+RUN echo '*** Configure bitcore.conf ***' && \	
+    chown bitcore:bitcore /tmp/bitcore.conf && \	
+    sudo -u bitcore mkdir -p /home/bitcore/.bitcore && \	
+    sudo -u bitcore cp /tmp/bitcore.conf /home/bitcore/.bitcore/bitcore.conf
 
 #
-# Step 6/10 - Configure bitcore.conf
-#
-COPY bitcore.conf /tmp
-RUN echo '*** Step 6/10 - Configure bitcore.conf ***' && \
-    chown bitcore:bitcore /tmp/bitcore.conf && \
-    sudo -u bitcore mkdir -p /home/bitcore/.bitcore && \
-    sudo -u bitcore mv /tmp/bitcore.conf /home/bitcore/.bitcore/ && \
-    echo '*** Done 6/10 ***'
-
-#
-# Step 7/10 - Adding bitcore daemon as a service
-#
-RUN echo '*** Step 7/10 - Adding bitcore daemon ***' && \
-    echo 'docker not supported systemd: skipped' && \
-    echo '*** Done 7/10 ***'
-
-#
-# Supervisor Configuration
+# Copy Supervisor Configuration
 #
 COPY *.sv.conf /etc/supervisor/conf.d/
 
@@ -133,12 +109,12 @@ COPY *.sv.conf /etc/supervisor/conf.d/
 VOLUME /var/log
 
 #
-# Start script
+# Copy start script
 #
+RUN echo '*** Copy start script ***'
 COPY start.sh /usr/local/bin/start.sh
-RUN \
-  rm -f /var/log/access.log && mkfifo -m 0666 /var/log/access.log && \
-  chmod 755 /usr/local/bin/*
+RUN rm -f /var/log/access.log && mkfifo -m 0666 /var/log/access.log && \
+    chmod 755 /usr/local/bin/*
 
 ENV TERM linux
 CMD ["/usr/local/bin/start.sh"]

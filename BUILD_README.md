@@ -4,11 +4,9 @@ The Dockerfile will install all required stuff to run a BitCore RPC Server and i
 
 ## Requirements
 - Linux Ubuntu 16.04 LTS
-- Running as docker host server (package docker.io installed)
+- Running as docker host server (package docker-ce installed)
 ```
-apt-get update -y
-apt-get upgrade -y
-apt-get install docker.io -y
+sudo curl -sSL https://get.docker.com | sh
 ```
 
 ## Needed files
@@ -26,21 +24,9 @@ mkswap /swapfile
 swapon /swapfile
 ```
 
-## Adding firewall rules
-Open needed ports on your docker host server.
-```
-ufw logging on
-ufw allow 22/tcp
-ufw limit 22/tcp
-ufw allow 8555/tcp
-ufw default deny incoming 
-ufw default allow outgoing 
-yes | ufw enable
-```
-
 ## Build docker image
 ```
-docker build [--build-arg BTXPWD='<bitcore user pwd>'] [--build-arg BOOTSTRAP='<bootstrapDDMMYY.tar.gz>'] -t btx-rpc-server .
+docker build [--build-arg BTXPWD='<bitcore user pwd>'] -t btx-rpc-server .
 ```
 
 ## Push docker image to hub.docker

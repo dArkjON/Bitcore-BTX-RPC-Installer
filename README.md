@@ -38,10 +38,10 @@ Support for the following distribution versions:
 * Debian 8 (x86_64-debian-jessie)
 * Debian 9 (x86_64-debian-stretch)
 * Debian 10 (x86_64-debian-buster)
-* Ubuntu 14.04 LTS (x86_64-ubuntu-trusty)
+* Ubuntu 14.04 LTS (x86_64-ubuntu-trusty) - tested
 * Ubuntu 16.04 LTS (x86_64-ubuntu-xenial) - tested
 * Ubuntu 17.10 (x86_64-ubuntu-artful)
-* Ubuntu 18.04 LTS (x86_64-ubuntu-bionic)
+* Ubuntu 18.04 LTS (x86_64-ubuntu-bionic) - tested
 
 ### Download and execute the docker-ce installation script
 

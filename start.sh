@@ -12,7 +12,7 @@ echo bitcore:${BTXPWD} | chpasswd
 # Downloading bitcore.conf
 #
 cd /tmp/
-wget https://raw.githubusercontent.com/dalijolijo/Bitcore-BTX-RPC-Installer/master/bitcore.conf -O /tmp/bitcore.conf
+wget https://raw.githubusercontent.com/LIMXTEC/Bitcore-BTX-RPC-Installer/master/bitcore.conf -O /tmp/bitcore.conf
 chown bitcore:bitcore /tmp/bitcore.conf
 
 #

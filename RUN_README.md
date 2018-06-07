@@ -16,12 +16,12 @@ yes | ufw enable
 
 ## Pull docker image
 ```
-docker pull <repository>/btx-rpc-server
+docker pull limxtec/btx-rpc-server
 ```
 
 ## Run docker container
 ```
-docker run -p 8555:8555 -p 8556:8556 -p 9051:9051 --name btx-rpc-server -e BTXPWD='NEW_BTX_PWD' -v /home/bitcore:/home/bitcore:rw -d <repository>/btx-rpc-server
+docker run -p 8555:8555 -p 8556:8556 -p 9051:9051 --name btx-rpc-server -e BTXPWD='NEW_BTX_PWD' -v /home/bitcore:/home/bitcore:rw -d limxtec/btx-rpc-server
 docker ps
 ```
 
@@ -43,7 +43,7 @@ docker exec -it btx-rpc-server bash
 
 ## Debbuging within a container during run (skip start.sh execution)
 ```
-docker run -p 8555:8555 -p 8556:8556 -p 9051:9051 --name btx-rpc-server -e BTXPWD='NEW_BTX_PWD' -v /home/bitcore:/home/bitcore:rw --entrypoint bash <repository>/btx-rpc-server
+docker run -p 8555:8555 -p 8556:8556 -p 9051:9051 --name btx-rpc-server -e BTXPWD='NEW_BTX_PWD' -v /home/bitcore:/home/bitcore:rw --entrypoint bash limxtec/btx-rpc-server
 ```
 
 ## Stop docker container
